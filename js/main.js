@@ -38,7 +38,7 @@ function authorized() {
     buttonAuth.style.display = ''; //возврат к норме прописанной в сss
     userName.style.display = ''; //возврат к норме прописанной в сss
     buttonOut.style.display = ''; //возврат к норме прописанной в сss
-    buttonOut.addEventListener('click', logOut);
+    buttonOut.removeEventListener('click', logOut);
     checkAuth(); //вызов функции проверки авторизаци
   }
 
@@ -54,7 +54,7 @@ function authorized() {
   }
  
 
-function notAuthorized() {
+function notAuthorized() { //дебаггер
 
    function logIn(event) {
    event.preventDefault();
@@ -63,13 +63,14 @@ function notAuthorized() {
    localStorage.setItem('gloDelivery', login);
 
    toogleModalAuth();  //отключение/подключение класса
-buttonAuth.removeEventListener('click', toogleModalAuth); //открывается по клику на кнопку войти
-closeAuth.removeEventListener('click', toogleModalAuth); // закрыие по клику на крестик
-logInForm.removeEventListener('sumbit', logIn);
-logInForm.reset();
-checkAuth(); //вызов функции проверки авторизации
+   buttonAuth.removeEventListener('click', toogleModalAuth); //дебаггер открывается по клику на кнопку войти
+   closeAuth.removeEventListener('click', toogleModalAuth); // закрыие по клику на крестик
+   logInForm.removeEventListener('sumbit', logIn);
+   logInForm.reset();
+   checkAuth(); //вызов функции проверки авторизации
 }
- buttonAuth.addEventListener('click', toogleModalAuth); //открывается по клику на кнопку войти
+
+buttonAuth.addEventListener('click', toogleModalAuth);
 closeAuth.addEventListener('click', toogleModalAuth); // закрыие по клику на крестик
 logInForm.addEventListener('sumbit', logIn); 
 }
@@ -83,4 +84,8 @@ function checkAuth(){
 }
 
 checkAuth();
+
+
+
+
 
